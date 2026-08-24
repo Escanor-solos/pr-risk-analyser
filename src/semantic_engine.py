@@ -46,7 +46,7 @@ def hunk_semantic_shift(hunk: Hunk) -> float | None:
     norm = (sum(a * a for a in old_emb) ** 0.5) * (sum(b * b for b in new_emb) ** 0.5)
     if norm == 0:
         return None
-    return round(1.0 - dot / norm, 4)
+    return round(float(1.0 - dot / norm), 4)
 
 
 def max_shift(files) -> float | None:
