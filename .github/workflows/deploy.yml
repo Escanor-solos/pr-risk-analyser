@@ -42,7 +42,7 @@ jobs:
       run:
         working-directory: infra
     env:
-      TF_VAR_project_id: ${{ env.PROJECT_ID }}
+      TF_VAR_project_id: pr-risk-analyzer
       TF_VAR_image: ${{ needs.build-push.outputs.image }}
       TF_VAR_github_token: ${{ secrets.PR_COMMENT_TOKEN }}
       TF_VAR_webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
