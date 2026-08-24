@@ -4,7 +4,6 @@ An NLP-powered GitHub App that analyzes pull request diffs and flags **risky
 semantic changes** — silently weakened auth checks, hardcoded secrets, widened IAM
 permissions — with severity-rated comments posted back on the PR.
 
-See [INTERVIEW_PREP.md](INTERVIEW_PREP.md) for the full architecture walkthrough.
 
 ## How it works
 
