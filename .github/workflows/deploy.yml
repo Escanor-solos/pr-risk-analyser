@@ -38,6 +38,8 @@ jobs:
   terraform-deploy:
     needs: build-push
     runs-on: ubuntu-latest
+    outputs:
+      url: ${{ steps.url.outputs.url }}
     defaults:
       run:
         working-directory: infra

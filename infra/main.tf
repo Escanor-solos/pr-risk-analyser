@@ -108,3 +108,10 @@ resource "google_cloud_run_v2_service" "analyzer" {
 
   depends_on = [google_project_service.run]
 }
+
+resource "google_cloud_run_v2_service_iam_member" "public" {
+  name     = google_cloud_run_v2_service.analyzer.name
+  location = var.region
+  role     = "roles/run.invoker"
+  member   = "allUsers"
+}
