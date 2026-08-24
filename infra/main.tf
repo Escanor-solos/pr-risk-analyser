@@ -34,17 +34,17 @@ resource "google_secret_manager_secret" "webhook_secret" {
 
 resource "google_secret_manager_secret_version" "github_token" {
   secret      = google_secret_manager_secret.github_token.id
-  data_wo     = var.github_token
+  secret_data  = var.github_token
   lifecycle {
-    ignore_changes = [data_wo]
+    ignore_changes = [secret_data]
   }
 }
 
 resource "google_secret_manager_secret_version" "webhook_secret" {
   secret      = google_secret_manager_secret.webhook_secret.id
-  data_wo     = var.webhook_secret
+  secret_data  = var.webhook_secret
   lifecycle {
-    ignore_changes = [data_wo]
+    ignore_changes = [secret_data]
   }
 }
 
@@ -80,13 +80,23 @@ resource "google_cloud_run_v2_service" "analyzer" {
           memory = "1024Mi"
         }
       }
-      secrets {
-        name        = "GITHUB_TOKEN"
-        secret_name = google_secret_manager_secret.github_token.secret_id
+      env {
+        name  = "GITHUB_TOKEN"
+        value_source {
+          secret_key_ref {
+            secret  = google_secret_manager_secret.github_token.secret_id
+            version = "latest"
+          }
+        }
       }
-      secrets {
-        name        = "GITHUB_WEBHOOK_SECRET"
-        secret_name = google_secret_manager_secret.webhook_secret.secret_id
+      env {
+        name  = "GITHUB_WEBHOOK_SECRET"
+        value_source {
+          secret_key_ref {
+            secret  = google_secret_manager_secret.webhook_secret.secret_id
+            version = "latest"
+          }
+        }
       }
       startup_probe {
         http_get {
