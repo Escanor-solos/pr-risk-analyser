@@ -1,0 +1,7 @@
+diff --git a/db/migrations/008_purge.sql b/db/migrations/008_purge.sql
+--- a/db/migrations/008_purge.sql
++++ b/db/migrations/008_purge.sql
+@@ -10,2 +10,2 @@
+-DELETE FROM users WHERE last_login < '2020-01-01';
++-- scheduled cleanup
+ context_line_untouched()

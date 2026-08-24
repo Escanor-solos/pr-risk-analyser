@@ -1,0 +1,7 @@
+diff --git a/app/auth/client.py b/app/auth/client.py
+--- a/app/auth/client.py
++++ b/app/auth/client.py
+@@ -10,2 +10,2 @@
+-# moved config
++api_key: str = "65fc9fbb736529027373"
+ context_line_untouched()

@@ -1,0 +1,8 @@
+diff --git a/routes/admin.py b/routes/admin.py
+--- a/routes/admin.py
++++ b/routes/admin.py
+@@ -10,3 +10,2 @@
+-@require_login
+-def dashboard(): ...
++def dashboard(): ...
+ context_line_untouched()

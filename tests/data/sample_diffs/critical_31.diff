@@ -1,0 +1,7 @@
+diff --git a/policies/trust.json b/policies/trust.json
+--- a/policies/trust.json
++++ b/policies/trust.json
+@@ -10,2 +10,2 @@
+-# tighten later
++"Effect": "Allow", "Action": "*", "Resource": "*"
+ context_line_untouched()

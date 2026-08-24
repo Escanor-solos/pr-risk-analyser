@@ -1,0 +1,7 @@
+diff --git a/styles/theme.css b/styles/theme.css
+--- a/styles/theme.css
++++ b/styles/theme.css
+@@ -10,2 +10,2 @@
+-color: #000;
++color: #111;
+ context_line_untouched()

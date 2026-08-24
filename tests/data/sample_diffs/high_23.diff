@@ -1,0 +1,8 @@
+diff --git a/db/migrations/007_cleanup.sql b/db/migrations/007_cleanup.sql
+--- a/db/migrations/007_cleanup.sql
++++ b/db/migrations/007_cleanup.sql
+@@ -10,3 +10,2 @@
+-DROP TABLE old_events;
+-TRUNCATE TABLE audit_log;
++-- scheduled cleanup
+ context_line_untouched()

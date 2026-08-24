@@ -1,0 +1,7 @@
+diff --git a/clients/http.py b/clients/http.py
+--- a/clients/http.py
++++ b/clients/http.py
+@@ -10,2 +10,2 @@
+-# placeholder
++requests.post(url, json=payload, verify=False)
+ context_line_untouched()

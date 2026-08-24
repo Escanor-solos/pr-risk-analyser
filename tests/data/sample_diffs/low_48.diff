@@ -1,0 +1,7 @@
+diff --git a/src/naming.py b/src/naming.py
+--- a/src/naming.py
++++ b/src/naming.py
+@@ -10,2 +10,2 @@
+-def calcTotal(a, b):
++def calculate_total(a, b):
+ context_line_untouched()

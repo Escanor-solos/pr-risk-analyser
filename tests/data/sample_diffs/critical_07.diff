@@ -1,0 +1,7 @@
+diff --git a/services/payment.py b/services/payment.py
+--- a/services/payment.py
++++ b/services/payment.py
+@@ -10,2 +10,2 @@
+-# moved config
++STRIPE_KEY = "sk_6262afa887ea89b1b66c0123456789"
+ context_line_untouched()

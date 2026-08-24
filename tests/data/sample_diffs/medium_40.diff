@@ -1,0 +1,7 @@
+diff --git a/utils/hash.py b/utils/hash.py
+--- a/utils/hash.py
++++ b/utils/hash.py
+@@ -10,2 +10,2 @@
+-hashlib.sha256(data).hexdigest()
++digest = hashlib.md5(data).hexdigest()
+ context_line_untouched()

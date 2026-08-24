@@ -1,0 +1,7 @@
+diff --git a/config/settings.py b/config/settings.py
+--- a/config/settings.py
++++ b/config/settings.py
+@@ -10,2 +10,2 @@
+-# moved config
++AWS_SECRET_ACCESS_KEY = "b4d87bd4dc83166db001"
+ context_line_untouched()

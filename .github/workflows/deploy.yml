@@ -1,0 +1,76 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+  REGION: us-central1
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.image.outputs.name }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: image
+        run: echo "name=${REGISTRY}/${IMAGE_NAME}:${GITHUB_SHA::12}" >> "$GITHUB_OUTPUT"
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.image.outputs.name }}
+
+  terraform-deploy:
+    needs: build-push
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra
+    env:
+      TF_VAR_project_id: ${{ vars.GCP_PROJECT_ID }}
+      TF_VAR_image: ${{ needs.build-push.outputs.image }}
+      TF_VAR_github_token: ${{ secrets.GITHUB_TOKEN_PR_COMMENTS }}
+      TF_VAR_webhook_secret: ${{ secrets.GITHUB_WEBHOOK_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "~1.9"
+      - name: Terraform init
+        run: terraform init -backend-config="bucket=${{ vars.TF_STATE_BUCKET }}"
+      - name: Terraform apply
+        run: terraform apply -auto-approve
+      - name: Save service URL
+        id: url
+        run: echo "url=$(terraform output -raw service_url)" >> "$GITHUB_OUTPUT"
+
+  smoke-test:
+    needs: terraform-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hit /health
+        run: |
+          url="${{ needs.terraform-deploy.outputs.url }}/health"
+          for i in $(seq 1 12); do
+            if curl -sf "$url"; then echo "healthy"; exit 0; fi
+            sleep 10
+          done
+          echo "smoke test failed"
+          exit 1

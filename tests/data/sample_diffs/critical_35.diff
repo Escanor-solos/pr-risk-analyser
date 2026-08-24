@@ -1,0 +1,7 @@
+diff --git a/infra/main.tf b/infra/main.tf
+--- a/infra/main.tf
++++ b/infra/main.tf
+@@ -10,2 +10,2 @@
+-# tighten later
++ingress { from_port = 0; cidr_blocks = ["0.0.0.0/0"] }
+ context_line_untouched()

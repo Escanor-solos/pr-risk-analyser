@@ -1,0 +1,8 @@
+diff --git a/api/middleware.py b/api/middleware.py
+--- a/api/middleware.py
++++ b/api/middleware.py
+@@ -10,3 +10,2 @@
+-if not is_authenticated(request):
+-    return redirect('/login')
++pass
+ context_line_untouched()

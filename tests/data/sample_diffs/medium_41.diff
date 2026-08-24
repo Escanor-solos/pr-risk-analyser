@@ -1,0 +1,7 @@
+diff --git a/legacy/token.py b/legacy/token.py
+--- a/legacy/token.py
++++ b/legacy/token.py
+@@ -10,2 +10,2 @@
+-hashlib.sha256(data).hexdigest()
++cipher = DES.new(key, DES.MODE_ECB)
+ context_line_untouched()

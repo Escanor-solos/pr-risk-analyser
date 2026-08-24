@@ -1,0 +1,7 @@
+diff --git a/internal/api.go b/internal/api.go
+--- a/internal/api.go
++++ b/internal/api.go
+@@ -10,2 +10,2 @@
+-# placeholder
++InsecureSkipVerify: true // dev only
+ context_line_untouched()

@@ -1,0 +1,6 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -10,1 +10,2 @@
++- release 1.2.3
+ context_line_untouched()

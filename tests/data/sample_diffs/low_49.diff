@@ -1,0 +1,7 @@
+diff --git a/src/comments.py b/src/comments.py
+--- a/src/comments.py
++++ b/src/comments.py
+@@ -10,2 +10,2 @@
+-x = 1 # TODO fix
++x = 1
+ context_line_untouched()

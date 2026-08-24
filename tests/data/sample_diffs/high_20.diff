@@ -1,0 +1,7 @@
+diff --git a/lib/guards.py b/lib/guards.py
+--- a/lib/guards.py
++++ b/lib/guards.py
+@@ -10,2 +10,2 @@
+-assert authorize(user, resource)
++# removed check
+ context_line_untouched()

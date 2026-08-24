@@ -1,0 +1,7 @@
+diff --git a/workers/notify.py b/workers/notify.py
+--- a/workers/notify.py
++++ b/workers/notify.py
+@@ -10,2 +10,2 @@
+-# moved config
++SLACK_TOKEN = "xoxb-9325a327c9bc34db8d33-123456"
+ context_line_untouched()

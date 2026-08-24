@@ -1,0 +1,7 @@
+diff --git a/src/format.py b/src/format.py
+--- a/src/format.py
++++ b/src/format.py
+@@ -10,2 +10,2 @@
+-return d.strftime("%Y-%m-%d")
++return d.isoformat()
+ context_line_untouched()

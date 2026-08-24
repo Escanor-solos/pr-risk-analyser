@@ -1,0 +1,7 @@
+diff --git a/.github/workflows/deploy.yml b/.github/workflows/deploy.yml
+--- a/.github/workflows/deploy.yml
++++ b/.github/workflows/deploy.yml
+@@ -10,2 +10,2 @@
+-# tighten later
++role: roles/owner
+ context_line_untouched()
